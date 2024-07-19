@@ -1,7 +1,7 @@
 package com.blogging.blog.serviceImpl;
 
 import com.blogging.blog.entities.User;
-import com.blogging.blog.exception.ResourceNotFoundException;
+import com.blogging.blog.exception.*;
 import com.blogging.blog.payloads.UserDto;
 import com.blogging.blog.repository.UserRepo;
 import com.blogging.blog.services.UserService;
