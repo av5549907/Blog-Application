@@ -7,6 +7,7 @@ import com.blogging.blog.repository.UserRepo;
 import com.blogging.blog.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto updateUser(UserDto userDto, Integer userId) {
-        User user= userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","id",userId));
+        User user= userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User Doesn't Exist","User","id",userId));
         User newUser=dtoToUser(userDto);
         userRepo.save(newUser);
         return UsertoUserDto(newUser);
@@ -42,7 +43,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserById(Integer userId) {
-        User user=userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","Id",userId));
+       User user=userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("","User","id",userId));
+       // User user=userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User",false));
         return UsertoUserDto(user);
     }
 
@@ -59,7 +61,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Integer userId) {
-        User user=userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","Id",userId));
+        User user=userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("","User","Id",userId));
         userRepo.delete(user);
 
     }
