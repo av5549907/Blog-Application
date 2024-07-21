@@ -9,7 +9,7 @@ import com.blogging.blog.payloads.PostResponse;
 import com.blogging.blog.repository.CategoryRepo;
 import com.blogging.blog.repository.PostRepo;
 import com.blogging.blog.repository.UserRepo;
-import com.blogging.blog.payloads.services.PostService;
+import com.blogging.blog.services.PostService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -107,15 +106,11 @@ public class PostServiceImpl implements PostService {
         List<Post> posts=this.postRepo.findAllByUser(user);
         return posts.stream().map((post)->PostToPostDto(post)).collect(Collectors.toList());
     }
-
+   /**********    Search By Title is implemented    ************/
     @Override
     public List<PostDto> getPostBySearch(String keywords) {
-        List<Post> posts=this.postRepo.findAll();
-        List<Post> keyPost= new ArrayList<>();
-        for(Post post:posts){
-            if(post.getPostTitle().contains(keywords))
-                keyPost.add(post);
-        }
+//        List<Post> keyPost= this.postRepo.findByPostTitleContaining(keywords); //Using JPA Method
+        List<Post> keyPost= this.postRepo.findByTitle("%"+keywords+"%");//Using JPQL
         return keyPost.stream().map((post)->PostToPostDto(post)).collect(Collectors.toList());
     }
 

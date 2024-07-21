@@ -4,7 +4,7 @@ import com.blogging.blog.entities.User;
 import com.blogging.blog.exception.*;
 import com.blogging.blog.payloads.UserDto;
 import com.blogging.blog.repository.UserRepo;
-import com.blogging.blog.payloads.services.UserService;
+import com.blogging.blog.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

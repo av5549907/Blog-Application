@@ -1,6 +1,5 @@
 package com.blogging.blog;
 
-import ch.qos.logback.core.CoreConstants;
 import com.blogging.blog.repository.UserRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

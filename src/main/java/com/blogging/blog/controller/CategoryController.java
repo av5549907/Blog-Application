@@ -3,7 +3,7 @@ package com.blogging.blog.controller;
 import com.blogging.blog.payloads.ApiResponse;
 import com.blogging.blog.payloads.CategoryDto;
 import com.blogging.blog.payloads.ResponseHandler;
-import com.blogging.blog.payloads.services.CategoryService;
+import com.blogging.blog.services.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

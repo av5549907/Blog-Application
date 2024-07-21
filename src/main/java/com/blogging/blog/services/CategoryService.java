@@ -1,4 +1,4 @@
-package com.blogging.blog.payloads.services;
+package com.blogging.blog.services;
 
 import com.blogging.blog.entities.Category;
 import com.blogging.blog.payloads.CategoryDto;
