@@ -1,4 +1,4 @@
-package com.blogging.blog.services;
+package com.blogging.blog.payloads.services;
 
 import com.blogging.blog.payloads.UserDto;
 
