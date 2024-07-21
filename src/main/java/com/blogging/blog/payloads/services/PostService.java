@@ -13,7 +13,7 @@ public interface PostService {
     PostDto createPost(PostDto postDto,Integer userId, Integer categoryId);
     PostDto updatePost(PostDto postDto,Integer postId);
     PostDto getPostById(Integer postId);
-    PostResponse getAllPosts(Integer pageNumber, Integer pageSize);
+    PostResponse getAllPosts(Integer pageNumber, Integer pageSize,String sortBy);
     void deletePostById(Integer postId);
     List<PostDto> getPostsByCategory(Integer categoryId);
     List<PostDto> getPostsByUser(Integer userId);

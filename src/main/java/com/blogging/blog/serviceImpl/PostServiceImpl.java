@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -72,8 +73,8 @@ public class PostServiceImpl implements PostService {
 
     /* Pagination is Implemented */
     @Override
-    public PostResponse getAllPosts(Integer pageNumber, Integer pageSize) {
-        Pageable p=  PageRequest.of(pageNumber,pageSize);
+    public PostResponse getAllPosts(Integer pageNumber, Integer pageSize,String sortBy) {
+        Pageable p=  PageRequest.of(pageNumber,pageSize, Sort.by(sortBy).ascending());// <---we can use ,descending to sort in descending order
         Page<Post> posts=this.postRepo.findAll(p);
         List<Post> allPosts=posts.getContent();
         PostResponse postResponse=new PostResponse();

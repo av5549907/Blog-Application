@@ -38,10 +38,11 @@ public class PostController {
         return new ResponseEntity<>(this.postService.getPostById(postId),HttpStatus.OK);
     }
     //Pagination Implemented
-    @GetMapping("/posts")  //http://www.localhost:8080/api/posts?pageNumber=1&pageSize=2 Url will be used to fetch the Posts in Pages
+    @GetMapping("/posts")  //http://www.localhost:8080/api/posts?pageNumber=1&pageSize=2&sortBy=postId Url will be used to fetch the Posts in Pages
     ResponseEntity<PostResponse> getAllPosts(@RequestParam(value ="pageNumber",defaultValue ="10",required = false) Integer pageNumber,
-                                             @RequestParam(value ="pageNumber",defaultValue ="1",required = false)Integer pageSize){
-        return new ResponseEntity<>(this.postService.getAllPosts(pageNumber,pageSize),HttpStatus.OK);
+                                             @RequestParam(value ="pageNumber",defaultValue ="1",required = false)Integer pageSize,
+                                             @RequestParam(value ="sortBy",defaultValue ="postId",required = false)String sortBy){
+        return new ResponseEntity<>(this.postService.getAllPosts(pageNumber,pageSize,sortBy),HttpStatus.OK);
     }
 
     @DeleteMapping("/posts/{postId}")
